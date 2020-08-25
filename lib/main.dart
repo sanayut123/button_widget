@@ -44,13 +44,23 @@ class _ExButtonState extends State<ExButton> {
               fontWeight: FontWeight.bold
             ),
           ),
-          FlatButton(
-            child: Text("Click +10"),
-            onPressed: (){
-              setState(() {
-                x = x + 10;
-              });
-          }),
+          ButtonBar(
+            alignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              RaisedButton(
+              child: Text("Click +1"),
+              onPressed: (){setState(() {x = x + 1;});}
+              ),
+              RaisedButton(
+              child: Text("Click +10"),
+              onPressed: (){setState(() {x = x + 10;});}
+              ),
+              RaisedButton(
+              child: Text("Click +100"),
+              onPressed: (){setState(() {x = x + 100;});}
+              ),
+            ],
+          ),          
         ],
       ),
     );
