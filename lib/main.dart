@@ -44,7 +44,7 @@ class _ExButtonState extends State<ExButton> {
               fontWeight: FontWeight.bold
             ),
           ),
-          RaisedButton(
+          FlatButton(
             child: Text("Click +10"),
             onPressed: (){
               setState(() {
