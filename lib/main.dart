@@ -10,15 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Example Button'),
-        ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: (){}
-        // ),
-        body: ExButton(),
-      ),
+      home: ExButton(),
     );
   }
 }
@@ -31,37 +23,27 @@ class _ExButtonState extends State<ExButton> {
   int x = 0;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,      
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            "Counter $x",
-            style: TextStyle(
-              fontSize: 30.0,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Example Button'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_box),
+        onPressed: (){
+          this.setState(() {
+            x = x + 100;
+          });
+        }
+      ),
+      body: Center(
+        child: Text(
+          "Counter $x",
+          style: TextStyle(
+            color: Colors.deepPurpleAccent,
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold
           ),
-          ButtonBar(
-            alignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              RaisedButton(
-              child: Text("Click +1"),
-              onPressed: (){setState(() {x = x + 1;});}
-              ),
-              RaisedButton(
-              child: Text("Click +10"),
-              onPressed: (){setState(() {x = x + 10;});}
-              ),
-              RaisedButton(
-              child: Text("Click +100"),
-              onPressed: (){setState(() {x = x + 100;});}
-              ),
-            ],
-          ),          
-        ],
+        ),
       ),
     );
   }
