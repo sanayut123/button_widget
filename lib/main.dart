@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Exaple Button'),
+          title: Text('Example Button'),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){}
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: (){}
+        // ),
         body: ExButton(),
       ),
     );
@@ -27,29 +27,30 @@ class ExButton extends StatefulWidget {
   @override
   _ExButtonState createState() => _ExButtonState();
 }
-
 class _ExButtonState extends State<ExButton> {
+  int x = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,      
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          RaisedButton(
-            child: Text("RaisedButton"),
-            onPressed: (){},
-          ),
-          FlatButton(onPressed: (){},
-            child: Text("FlatButton")
+          Text(
+            "Counter $x",
+            style: TextStyle(
+              fontSize: 30.0,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold
             ),
-          ButtonBar(
-            alignment: MainAxisAlignment.spaceAround,
-            buttonHeight: 50.0,
-            children: [
-              RaisedButton(onPressed: (){},child: Text('Click1'),),
-              RaisedButton(onPressed: (){},child: Text('Click2')),
-              RaisedButton(onPressed: (){},child: Text('Click3')),
-            ],
           ),
+          RaisedButton(
+            child: Text("Click +10"),
+            onPressed: (){
+              setState(() {
+                x = x + 10;
+              });
+          }),
         ],
       ),
     );
